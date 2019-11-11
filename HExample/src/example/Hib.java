@@ -9,8 +9,8 @@ public class Hib {
 
 	public static void main(String[] args) {
 		
-		Configuration cfg=new Configuration();
-		cfg.configure("H.cfg.xml");
+		Configuration cfg=new Configuration().configure().add
+		
 		SessionFactory factory = cfg.buildSessionFactory();
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();

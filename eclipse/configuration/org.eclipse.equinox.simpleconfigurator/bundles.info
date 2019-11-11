@@ -850,7 +850,7 @@ org.eclipse.wst.json.bower.ui,1.0.200.v201904210526,plugins/org.eclipse.wst.json
 org.eclipse.wst.json.core,1.1.0.v201901152013,plugins/org.eclipse.wst.json.core_1.1.0.v201901152013.jar,4,false
 org.eclipse.wst.json.eslint.core,1.0.0.v201901071922,plugins/org.eclipse.wst.json.eslint.core_1.0.0.v201901071922.jar,4,false
 org.eclipse.wst.json.eslint.ui,1.0.200.v201904210526,plugins/org.eclipse.wst.json.eslint.ui_1.0.200.v201904210526.jar,4,false
-org.eclipse.wst.json.jshint.core,1.0.0.v201901071922,plugins/org.eclipse.wst.json.jshint.core_1.0.0.v201901071922.jar,4,false
+org.eclipse.wst.json.jshint.core,1.0.1.v201908281850,plugins/org.eclipse.wst.json.jshint.core_1.0.1.v201908281850.jar,4,false
 org.eclipse.wst.json.jshint.ui,1.0.200.v201904210526,plugins/org.eclipse.wst.json.jshint.ui_1.0.200.v201904210526.jar,4,false
 org.eclipse.wst.json.npm.core,1.0.0.v201901071922,plugins/org.eclipse.wst.json.npm.core_1.0.0.v201901071922.jar,4,false
 org.eclipse.wst.json.npm.ui,1.0.100.v201904210526,plugins/org.eclipse.wst.json.npm.ui_1.0.100.v201904210526.jar,4,false
