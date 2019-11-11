@@ -17,8 +17,8 @@ public static void main(String[] args) {
 				u = u/10;
 	
 	}
-				sc. close();
-				System.out.println("sum=" + m);				
+	sc. close();
+	System.out.println("sum=" + m);				
 	}
 }
 

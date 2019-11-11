@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class FortyFive {
 public static void main(String[] args) {
 	
-	String[] strArr= {"T","r","a","i","n","i","n","g"};
+	String[] strArr= {"t","r","a","i","n","i","n","g"};
 	
 	
 	Arrays.sort(strArr);
