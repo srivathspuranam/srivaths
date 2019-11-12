@@ -1,4 +1,4 @@
-package tech;
+package com.test.tech;
 
 import java.util.Scanner;
 

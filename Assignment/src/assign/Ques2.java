@@ -14,7 +14,7 @@ package assign;
 		
 		if(args.length!=1)
 		{
-			System.out.println("invalid syntax,Usage=Empdatafilter<empdata_file>");
+			System.out.println("invalid syntax,Usage=Empdatafilter<EmpDataTech_file>");
 			System.exit(0);
 		}
 		File file= new File(args[0]);
@@ -39,7 +39,7 @@ package assign;
 		{
 			sb.append(record+"\n");
 			fields = record.split(":");
-			dept.add(fields[3]);
+			dept.add(fields[2]);
 			record = dis.readLine();		
 		}
 	        Iterator<String> itr= dept.iterator();

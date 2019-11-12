@@ -1,4 +1,4 @@
-package tech;
+package com.test.tech;
 
 public class FortyThree {
 public static void main(String[] args) {

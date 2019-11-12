@@ -1,4 +1,4 @@
-package tech;
+package com.test.tech;
 
 public class Swap {
 	private int a;
