@@ -9,7 +9,7 @@ public static void main(String[] args) {
 	if(j==5){
     System.out.print("A");}
 	else{
-    System.out.print("  ");
+    System.out.print(" ");
 	continue;	
 	}	
 	}

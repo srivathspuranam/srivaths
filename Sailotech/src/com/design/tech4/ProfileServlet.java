@@ -1,4 +1,4 @@
-package com.Sailotech.server.welcome;
+package com.design.tech4;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,20 +43,16 @@ public class ProfileServlet extends HttpServlet {
 			Class.forName(Driver);
 			String url = "jdbc:oracle:thin:@" + Host + ":" + port + ":" + sid;
 			connection = DriverManager.getConnection(url, Uid, password);
-			statement = connection.prepareStatement("SELECT * FROM SAILO1 WHERE USERID=? ");
+			statement = connection.prepareStatement("SELECT * FROM SAILO2 WHERE USERID=? ");
 			HttpSession session = req.getSession(false);
 			String userName = (String) session.getAttribute("sid");
 			statement.setString(1, userName);
 			ResultSet result = statement.executeQuery();
 			result.next();
-			String userID = result.getString(1);
 			String firstName = result.getString(3);
 			String lastName = result.getString(4);
 			Date date = result.getDate(5);
 			String gender = result.getString(6);
-			out.println("<h1>Welcome, " + userID + "</h1><hr>");
-			out.println("<input type=\"submit\" onclick=\"window.location.href='./logout';\" value=\"logout\">");
-			out.println("<h3>User ID - "+userID+"</h3>");
 			out.println("<h3>First Name - "+firstName+"</h3>");
 			out.println("<h3>Last Name - "+lastName+"</h3>");
 			out.println("<h3>Date Of Birth - "+date+"</h3>");

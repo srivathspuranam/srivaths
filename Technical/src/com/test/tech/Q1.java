@@ -18,7 +18,7 @@ public static void main(String[] args) {
 	while(m>0) {
 		b=m%10;
 		m=m/10;
-		a= a+ (b*b*b);
+		a= a+ (b*b*b*b);
 	}
 	if(temp==a)
 		System.out.println("Armstrong No.");
