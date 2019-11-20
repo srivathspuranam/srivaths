@@ -9,7 +9,7 @@ public class Hib {
 
 	public static void main(String[] args) {
 		
-		Configuration cfg=new Configuration().configure().add
+		Configuration cfg=new Configuration().configure().addJar(null);
 		
 		SessionFactory factory = cfg.buildSessionFactory();
 		Session session = factory.openSession();

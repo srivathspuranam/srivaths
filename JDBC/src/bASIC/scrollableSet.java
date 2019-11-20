@@ -18,32 +18,14 @@ public static void main(String[] args) throws SQLException {
 		con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.189:1523:sailodba","apps", 
 												"apps");
 		
-		Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE );			
+		Statement st = con.createStatement( );			
 		String sqlQuery="select * from SRIVATHS1";		
 		
 		ResultSet rs = st.executeQuery(sqlQuery);	
-		
-		if(rs.first())
-		{
-			System.out.println("fisrt record id : "+rs.getInt(1));
-		}			
-		if(rs.absolute(3))
-		{
-			System.out.println("fifth record id : "+rs.getInt(1));
-		}			
-		if(rs.relative(-2))
-		{
-			System.out.println("third record id : "+rs.getInt(1));
-		}			
-		if(rs.relative(5))
-		{
-			System.out.println("seventh record id : "+rs.getInt(1));
+		while(rs.next()) {
+			System.out.println("FIRST");
 		}
-		if(rs.last())
-		{
-			System.out.println("last record id : "+rs.getInt(1));
-		}			
-		con.close();				
+				con.close();				
 
 	}
 	catch(Exception e)
