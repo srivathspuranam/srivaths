@@ -16,7 +16,7 @@ public class QS10 {
        File f1 = null;
        File f2 = null;
        File dst = null;
-        new Q6();
+       Q6 excell= new Q6();
         FileInputStream fis = null;
         DataInputStream dis = null;
         FileInputStream fis1 = null;
@@ -58,16 +58,20 @@ public class QS10 {
             e.printStackTrace();
         } 
         finally {
-     if (dis != null) {
+            if (dis != null) 
+            {
                 dis.close();
             }
-            if (dis1 != null) {
+            if (dis1 != null) 
+            {
                 dis1.close();
             }
-            if (fis != null) {
+            if (fis != null) 
+            {
                 fis.close();
             }
-            if (fis1 != null) {
+            if (fis1 != null) 
+            {
                 fis1.close();
             }
         }

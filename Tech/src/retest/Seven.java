@@ -1,7 +1,7 @@
-package com.test.tech;
+package retest;
 
-public final class FortyEight {
-	
+public final class Seven {
+		
 	private int a = 10;
 	private int b = 40;
 	

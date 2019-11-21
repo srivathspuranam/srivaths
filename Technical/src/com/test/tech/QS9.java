@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class QS9 {
 	public static void main(String[] args) {
-int i;
 ArrayList<String> al= new ArrayList<String> ();
 ArrayList<String> al2= new ArrayList<String> ();
 		al.add("Java");
