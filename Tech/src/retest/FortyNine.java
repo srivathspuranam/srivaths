@@ -1,6 +1,6 @@
 package retest;
 
-public class Eight{
+public class FortyNine{
 public static void main(String[] args){
    	try
 	{
