@@ -10,19 +10,15 @@ import java.util.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class ProfileServlet extends HttpServlet {
-
-	@Override
+public class ContactServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
 
-	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -50,7 +46,6 @@ public class ProfileServlet extends HttpServlet {
 			String gender = result.getString(4);
 			String dept = result.getString(5);
 			String role = result.getString(6);
-			System.out.println(Name);
 			out.println("<h3>First Name - " + Name + "</h3>");
 			out.println("<h3>Date Of Birth - " + DOB + "</h3>");
 			out.println("<h3>Gender - " + gender + "</h3>");
@@ -59,5 +54,10 @@ public class ProfileServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private ServletContext getServletContext() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
