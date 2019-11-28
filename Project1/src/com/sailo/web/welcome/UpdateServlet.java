@@ -39,7 +39,8 @@ public class UpdateServlet extends HttpServlet {
 			Class.forName(Driver);
 			String url = "jdbc:oracle:thin:@" + Host + ":" + port + ":" + sid;
 			con = DriverManager.getConnection(url, Uid, password1);
-			PreparedStatement ps = con.prepareStatement("UPDATE EMPLOYEES SET PASSWORD=?,DATE=?,GENDER=?,DEPT=?,ROLE=? WHERE NAME=?");
+			PreparedStatement ps = con
+					.prepareStatement("UPDATE EMPLOYEES SET PASSWORD=?,DATE=?,GENDER=?,DEPT=?,ROLE=? WHERE NAME=?");
 			ps.setString(1, name);
 			ps.setString(2, password);
 			ps.setString(3, date);
@@ -48,7 +49,7 @@ public class UpdateServlet extends HttpServlet {
 			ps.setString(6, role);
 			con.commit();
 			out.println("<h3>Sucessfully updated</h3>");
-	
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -57,5 +58,5 @@ public class UpdateServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
-}
+	}
 }

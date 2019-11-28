@@ -12,12 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class DeleteServlet extends HttpServlet{
+public class DeleteServlet extends HttpServlet {
 
 	Connection con = null;
 	PreparedStatement ps = null;
-	
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
@@ -47,5 +46,5 @@ public class DeleteServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
-	
+
 }

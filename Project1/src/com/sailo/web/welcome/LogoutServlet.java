@@ -16,17 +16,17 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html");  
-        PrintWriter out=resp.getWriter();
-        HttpSession session=req.getSession(false);
-        session.invalidate();
-        out.print("<h3 style=\"color: green;\">You're successfully logged out!</h3>");  
-        RequestDispatcher loginRequestDispatcher=req.getRequestDispatcher("HomePage.html");
-        loginRequestDispatcher.include(req, resp); 
+		resp.setContentType("text/html");
+		PrintWriter out = resp.getWriter();
+		HttpSession session = req.getSession(false);
+		session.invalidate();
+		out.print(" <h3 style=\"text-align: center;\">You've been logged out successfully. Please login to access the MENU</h3>");
+		out.print("<hr>");
+		RequestDispatcher loginRequestDispatcher = req.getRequestDispatcher("LoginForm.html");
+		loginRequestDispatcher.include(req, resp);
 	}
 
-	
 }

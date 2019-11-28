@@ -47,16 +47,14 @@ public class RegisterServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		try {
 			String Name = req.getParameter("name");
-			String passwd = req.getParameter("passwd");
-			String repasswd = req.getParameter("re-passwd");
+			String passwd = req.getParameter("psswd");
+			String repasswd = req.getParameter("re-psswd");
 			String dob = req.getParameter("date");
 			String gender = req.getParameter("gender");
 			String dept = req.getParameter("dept");
 			String role = req.getParameter("role");
 			if (!passwd.equals(repasswd)) {
 				out.println("<h3 style=\"color: red;\">Password does not Match!!</h3>");
-				RequestDispatcher requestDispatcher = req.getRequestDispatcher("RegisterForm.html");
-				requestDispatcher.include(req, resp);
 				return;
 			}
 			statement.setString(1, Name);
@@ -72,23 +70,14 @@ public class RegisterServlet extends HttpServlet {
 			int count = executeQuery.getInt(1);
 			if (count == 1) {
 				out.println("<h3 style=\"color: red;\">Name already exists!</h3>");
-				RequestDispatcher requestDispatcher = req.getRequestDispatcher("RegisterForm.html");
-				requestDispatcher.include(req, resp);
 			} else {
 				statement.executeUpdate();
 				out.println("<h3 style=\"color: green;\">Sucessfully registered!</h3>");
 				connnection.commit();
-				RequestDispatcher requestDispatcher = req.getRequestDispatcher("RegisterForm.html");
-				requestDispatcher.include(req, resp);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			out.print("<h1 style=\\\"color: red;\\\">Server Busy!</h1>");
-			try {
-				connnection.rollback();
-			} catch (SQLException p) {
-				p.printStackTrace();
-			}
 		}
 	}
 

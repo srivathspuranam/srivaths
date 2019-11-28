@@ -3,7 +3,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/j2ee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/j2ee http://xmlns.jcp.org/xml/ns/j2ee/web-app_4_0.xsd"
 	id="WebApp_ID" version="4.0">
-	<display-name>assignment</display-name>
+	<display-name>Project1</display-name>
 	<welcome-file-list>
 		<welcome-file>LoginForm.html</welcome-file>
 	</welcome-file-list>
@@ -46,6 +46,16 @@
 		<servlet-name>RegisterServlet</servlet-name>
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ContactServlet</servlet-name>
+		<servlet-class>com.sailo.web.welcome.ContactServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ContactServlet</servlet-name>
+		<url-pattern>/contact</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
@@ -66,7 +76,7 @@
 		<servlet-name>UpdateServlet</servlet-name>
 		<url-pattern>/update</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>DeleteServlet</servlet-name>
 		<servlet-class>com.sailo.web.welcome.DeleteServlet</servlet-class>

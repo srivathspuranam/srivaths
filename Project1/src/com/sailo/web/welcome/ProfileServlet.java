@@ -46,16 +46,18 @@ public class ProfileServlet extends HttpServlet {
 			ResultSet result = statement.executeQuery();
 			result.next();
 			String Name = result.getString(1);
-			Date DOB = result.getDate(3);
+			String DOB = result.getString(3);
 			String gender = result.getString(4);
 			String dept = result.getString(5);
 			String role = result.getString(6);
-			System.out.println(Name);
-			out.println("<h3>First Name - " + Name + "</h3>");
-			out.println("<h3>Date Of Birth - " + DOB + "</h3>");
-			out.println("<h3>Gender - " + gender + "</h3>");
-			out.println("<h3>Department - " + dept + "</h3>");
-			out.println("<h3>Role - " + role + "</h3>");
+			out.print("<hr>");
+			out.print(" <h1 style=\"text-align: center;\">Profile Details</h1>");
+			out.print("<hr>");
+			out.print(" <h3 style=\"text-align: center;\">Name -" + Name + "</h3>");
+			out.print(" <h3 style=\"text-align: center;\">DoB -" + DOB + "</h3>");
+			out.print(" <h3 style=\"text-align: center;\">Gender -" + gender + "</h3>");
+			out.print(" <h3 style=\"text-align: center;\">Department -" + dept + "</h3>");
+			out.print(" <h3 style=\"text-align: center;\">Role -" + role + "</h3>");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

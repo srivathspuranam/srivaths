@@ -48,7 +48,6 @@ public class LoginServlet extends HttpServlet {
 		try {
 			String Name = req.getParameter("Name");
 			String passwd = req.getParameter("password");
-			System.out.println(Name +" "+ passwd);
 			statement.setString(1, Name);
 			statement.setString(2, passwd);
 			ResultSet executeQuery = statement.executeQuery();
@@ -66,8 +65,8 @@ public class LoginServlet extends HttpServlet {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.print("<h1 style=\\\"color: red;\\\">Server Busy!</h1>");
-			
+			out.print("<h1>Server Busy!</h1>");
+
 		}
 	}
 
