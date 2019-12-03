@@ -52,11 +52,14 @@ public class ContactServlet extends HttpServlet {
 				String dept = result.getString(5);
 				String role = result.getString(6);
 				out.print("<tr>");
+				
 				out.print("<td style=\"text-align: center;\">" + Name + "</td>");
 				out.print("<td style=\"text-align: center;\">" + DOB + "</td>");
 				out.print("<td style=\"text-align: center;\">" + gender + "</td>");
 				out.print("<td style=\"text-align: center;\">" + dept + "</td>");
 				out.print("<td style=\"text-align: center;\">" + role + "</td>");
+				out.print("<td> <button id=\"update\" value=\"<out.print(rs.getString(1));>\">Update</button></td>");
+				out.print("<td> <a href=\"delete?action=delete&Name="+Name+"\">Delete</a></td>");
 				out.print("</tr>");
 			}
 			out.print("</table>");

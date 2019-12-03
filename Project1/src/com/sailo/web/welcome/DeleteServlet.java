@@ -21,7 +21,7 @@ public class DeleteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
-		String name = req.getParameter("name");
+		String Name = req.getParameter("Name");
 		try {
 			ServletContext context = getServletContext();
 			String Driver = context.getInitParameter("dbDriver");
@@ -33,10 +33,15 @@ public class DeleteServlet extends HttpServlet {
 			Class.forName(Driver);
 			String url = "jdbc:oracle:thin:@" + Host + ":" + port + ":" + sid;
 			con = DriverManager.getConnection(url, Uid, password);
-			PreparedStatement ps = con.prepareStatement("DELETE FROM EMPLOYEES WHERE NAME IS=?");
-			ps.setString(1, name);
-			con.commit();
-			out.println("<h3 style=\"color: green;\">Deleted!</h3>");
+			PreparedStatement ps = con.prepareStatement("DELETE FROM EMPLOYEES WHERE NAME =?");
+			ps.setString(1, Name);
+			System.out.println(Name);
+			int update = ps.executeUpdate();
+			if (update > 0) {
+				out.println("<h3 style=\"color: green;\">Successfully Deleted.</h3>");
+			} else {
+				out.println("<h3 style=\"color: red;\">Failed to Delete!!</h3>");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

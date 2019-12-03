@@ -47,8 +47,8 @@ public class RegisterServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		try {
 			String Name = req.getParameter("name");
-			String passwd = req.getParameter("psswd");
-			String repasswd = req.getParameter("re-psswd");
+			String passwd = req.getParameter("password");
+			String repasswd = req.getParameter("repasswd");
 			String dob = req.getParameter("date");
 			String gender = req.getParameter("gender");
 			String dept = req.getParameter("dept");
@@ -77,7 +77,7 @@ public class RegisterServlet extends HttpServlet {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.print("<h1 style=\\\"color: red;\\\">Server Busy!</h1>");
+			out.print("<h1>Server Busy!</h1>");
 		}
 	}
 

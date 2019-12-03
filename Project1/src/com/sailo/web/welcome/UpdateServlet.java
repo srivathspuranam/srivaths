@@ -23,11 +23,12 @@ public class UpdateServlet extends HttpServlet {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		String name = req.getParameter("name");
-		String password = req.getParameter("password");
+		String passwd = req.getParameter("password");
 		String date = req.getParameter("date");
 		String gender = req.getParameter("gender");
 		String dept = req.getParameter("dept");
 		String role = req.getParameter("role");
+		System.out.println("efdwvgailg");
 		try {
 			ServletContext context = getServletContext();
 			String Driver = context.getInitParameter("dbDriver");
@@ -42,13 +43,14 @@ public class UpdateServlet extends HttpServlet {
 			PreparedStatement ps = con
 					.prepareStatement("UPDATE EMPLOYEES SET PASSWORD=?,DATE=?,GENDER=?,DEPT=?,ROLE=? WHERE NAME=?");
 			ps.setString(1, name);
-			ps.setString(2, password);
+			ps.setString(2, passwd);
 			ps.setString(3, date);
 			ps.setString(4, gender);
 			ps.setString(5, dept);
 			ps.setString(6, role);
 			con.commit();
 			out.println("<h3>Sucessfully updated</h3>");
+			System.out.println();
 
 		} catch (Exception e) {
 			e.printStackTrace();
