@@ -29,14 +29,14 @@ List<UserBean> userList = dao.getAllUsers();
 
 for (UserBean user : userList) {
 %>
-<td><%=user.getuserId()%></td>
-<td><%=user.getFirstName()%></td>
-<td><%=user.getMiddleName()%></td>
-<td><%=user.getLastName()%></td>
-<td><%=user.getGender()%></td>
-<td><%=user.getZipCode()%></td>
-<td> <a href="userHandler?action=editform&userId=<%=user.getuserId()%>">Update</a></td>
-<td> <a href="userHandler?action=delete&userId=<%=user.getuserId()%>">Delete</a></td>
+<td><%=user.getUserId()%></td>
+<td><%=user.getUserFirstName()%></td>
+<td><%=user.getUserMiddleName()%></td>
+<td><%=user.getUserLastName()%></td>
+<td><%=user.getUserGender()%></td>
+<td><%=user.getUserZipCode()%></td>
+<td> <a href="userHandler?action=editform&userId=<%=user.getUserId()%>">Update</a></td>
+<td> <a href="userHandler?action=delete&userId=<%=user.getUserId()%>">Delete</a></td>
 </tr>
 <%
 }

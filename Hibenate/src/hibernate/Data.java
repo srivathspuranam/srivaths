@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 
 public class Data {
 
-	public static void main(String[] args) {
+	public static void main(String [] args) {
 		Configuration cfg= new Configuration();
 		cfg.configure("Employee.cfg.xml");
 		SessionFactory factory = cfg.buildSessionFactory();

@@ -20,5 +20,6 @@
 	<classpathentry kind="lib" path="D:/Hibernate JAR Files/log4j-1.2.11.jar"/>
 	<classpathentry kind="lib" path="D:/Hibernate JAR Files/ojdbc14-1.0.jar"/>
 	<classpathentry kind="lib" path="D:/Hibernate JAR Files/xerces-2.6.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
