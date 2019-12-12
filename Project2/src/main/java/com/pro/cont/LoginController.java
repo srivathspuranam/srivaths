@@ -25,7 +25,7 @@ public class LoginController {
 		if (!(name.isEmpty() || passwd.isEmpty())) {
 			String role = LoginService.authenticate(name, passwd);
 			if (!role.equals("failed")) {
-				mv = new ModelAndView("web");
+				mv = new ModelAndView("dashboard");
 				mv.addObject("role", role);
 				mv.addObject("name", name);
 				HttpSession session = request.getSession();

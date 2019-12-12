@@ -15,7 +15,7 @@ public class TaskService {
 			SessionFactory sessionFactory = connection.getSessionFactory();
 			Session session = sessionFactory.openSession();
 			Transaction transaction = session.beginTransaction();
-			Query query = session.createQuery("update Users set Tstatus = :Tstatus where name = :name");
+			Query query = session.createQuery("update Users set tstatus = :tstatus where name = :name");
 			query.setParameter("tstatus", tstatus);
 			query.setParameter("name", name);
 			int i = query.executeUpdate();
