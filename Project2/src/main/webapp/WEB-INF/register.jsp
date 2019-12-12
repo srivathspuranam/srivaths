@@ -14,7 +14,7 @@
 
 <body>
 	<div id="message" style="text-align: center;"></div>
-	<form action="./register" method="POST">
+	<form action="register" method="POST">
 		<hr>
 		<h1 style="text-align: center;">Sailotech Pvt. Ltd.</h1>
 		<hr>
