@@ -9,16 +9,18 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>NewTasks</title>
+	<meta charset="UTF-8">
+	<title>New Tasks</title>
 </head>
+
 <body>
 	<%
 		session = request.getSession(false);
 		String name = (String) session.getAttribute("name");
 	%>
-	<form action="tasks" method="post">
+	<form action="newtask" method="post">
 		<br>
 		<h1 style="text-align: center;">Assign a Task</h1>
 		<hr>
@@ -27,11 +29,11 @@
 		<br> <br>
 		<div style="text-align: center;">
 			Assignment : <br>
-			<textarea name="task" id="task" cols="100" rows="10"></textarea>
+			<textarea name="task" id="task" cols="100" rows="50"></textarea>
 		</div>
 		<br> <br>
 		<div style="text-align: center;">
-			Assign to employee :<select name="employee">
+			Assign to employee :<select name="Employee">
 				<%
 					SessionFactory sf = connection.getSessionFactory();
 					Session s = sf.openSession();
@@ -47,14 +49,13 @@
 					}
 					}
 				%>
-			
+
 		</div>
-		<br> <input type="text" name="assigned" value="<%=name%>"
-			hidden>
+		<br> <input type="text" name="assigned" value="<%=name%>" hidden>
 		<h3 style="text-align: center;">
-			Assign :
-			<button type="submit">assign</button>
+			Assign :<button type="submit">Assign</button>
 		</h3>
 	</form>
 </body>
+
 </html>

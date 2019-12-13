@@ -24,20 +24,20 @@ public class RegisterController {
 	}
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+	public ModelAndView register(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
 		String name = request.getParameter("name");
-		String passwd = request.getParameter("passwd");
-		String repasswd = request.getParameter("repasswd");
+		String password = request.getParameter("password");
+		String repassword = request.getParameter("repassword");
 		String gender = request.getParameter("gender");
 		String date = request.getParameter("date");
 		String role = request.getParameter("role");
 		Users user = new Users();
 		user.setId(Integer.parseInt(request.getParameter("manager")));
-		if (passwd.equals(repasswd)) {
+		if (password.equals(repassword)) {
 			Users u = new Users();
 			u.setName(name);
-			u.setPasswd(passwd);
-			u.setDate(date);
+			u.setPassword(password);
+			u.setDob(date);
 			u.setGender(gender);
 			u.setRole(role);
 			u.setManager(user);

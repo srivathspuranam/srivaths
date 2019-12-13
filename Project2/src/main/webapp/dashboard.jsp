@@ -2,10 +2,12 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Dashboard</title>
 </head>
+
 <body>
 <body>
 	<%
@@ -21,18 +23,21 @@
 	<h1 style="text-align: center;">
 		Welcome ,<%=name%></h1>
 	<hr>
+
 	<h1 style="text-align: end;">
 		<input type="button" onclick="window.location.href='logout.jsp';"
 			value="logout">
 	</h1>
+	<h3 style="text-align: center;">Adminstrator</h3>
 	<br>
-	<br>
-	<h3 style="text-align: center;">Adminstartor</h3>
 	<br>
 	<h3 style="text-align: center;">
 		Register : <input type="button"
 			onclick="window.location.href='register.jsp';" value="Register">
 	</h3>
+	<br>
+	<br>
+
 	<%
 		} else if (role.equals("Manager")) {
 	%>
@@ -41,12 +46,6 @@
 	<h1 style="text-align: center;">
 		Welcome , Mr.<%=name%></h1>
 	<hr>
-	<h1 style="text-align: end;">
-		<input type="button" onclick="window.location.href='logout.jsp';"
-			value="logout">
-	</h1>
-	<br>
-	<br>
 	<h3 style="text-align: center;">Manager</h3>
 	<br>
 	<h3 style="text-align: center;">
@@ -55,6 +54,13 @@
 		<br> Check Status : <input type="button"
 			onclick="window.location.href='getstatus';" value="Status">
 	</h3>
+	<h1 style="text-align: end;">
+		<input type="button" onclick="window.location.href='logout.jsp';"
+			value="logout">
+	</h1>
+	<br>
+	<br>
+
 	<%
 		} else {
 	%>
@@ -67,7 +73,6 @@
 		<input type="button" onclick="window.location.href='logout.jsp';"
 			value="logout">
 	</h1>
-	<br>
 	<br>
 	<h3 style="text-align: center;">Employee</h3>
 	<br>

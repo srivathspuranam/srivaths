@@ -2,10 +2,12 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Login Page</title>
+	<meta charset="ISO-8859-1">
+	<title>Login Page</title>
 </head>
+
 <body>
 	<form action="login" method="post">
 		<br>
@@ -14,13 +16,12 @@
 		<br> <br>
 		<h3 style="text-align: center;">
 			Name:<input type="text" name="name"><br> <br>
-			Password:<input type="password" name="passwd">
+			Password:<input type="password" name="password">
 		</h3>
 		<h2 style="text-align: center;">
 			<input type="submit" value="Sign in"><br> <br>
 		</h2>
 	</form>
 </body>
+
 </html>
-
-

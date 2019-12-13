@@ -15,15 +15,15 @@ public class Users {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
-	private String passwd;
+	private String password;
 	private String gender;
-	private String date;
+	private String dob;
 	private String role;
 	@ManyToOne
 	@JoinColumn(name = "manager")
 	private Users manager;
 	private String task;
-	private String Tstatus;
+	private String tstatus;
 	private String assigned;
 
 	public Users getManager() {
@@ -43,11 +43,11 @@ public class Users {
 	}
 
 	public String getTstatus() {
-		return Tstatus;
+		return tstatus;
 	}
 
 	public void setTstatus(String tstatus) {
-		Tstatus = tstatus;
+		this.tstatus = tstatus;
 	}
 
 	public String getAssigned() {
@@ -74,12 +74,12 @@ public class Users {
 		this.name = name;
 	}
 
-	public String getPasswd() {
-		return passwd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getGender() {
@@ -90,12 +90,12 @@ public class Users {
 		this.gender = gender;
 	}
 
-	public String getDate() {
-		return date;
+	public String getDob() {
+		return dob;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 
 	public String getRole() {

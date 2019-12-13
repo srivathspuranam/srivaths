@@ -9,9 +9,10 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>Tasks</title>
+	<meta charset="UTF-8">
+	<title>Task Page</title>
 </head>
+
 <body>
 	<%
 		session = request.getSession(false);
@@ -31,7 +32,7 @@
 		}
 		if (task != null) {
 	%>
-	<form action="tasks" method="post">
+	<form action="task" method="post">
 		<br>
 		<h1 style="text-align: center;">Assigned task</h1>
 		<hr>
@@ -39,12 +40,12 @@
 		<h3 style="text-align: center;">${success}</h3>
 		<br> <br>
 		<div style="text-align: center;">
-			<textarea name="task" id="task" cols="100" rows="10" disabled><%=task%></textarea>
+			<textarea name="task" id="task" cols="100" rows="50" disabled><%=task%></textarea>
 		</div>
 		<br>
 		<h3 style="text-align: center;">Status</h3>
 		<div style="text-align: center;">
-			<textarea name="status_value" id="status" cols="100" rows="10">
+			<textarea name="status_value" id="tstatus" cols="100" rows="10">
 				<%
 					if (status != null) {
 				%><%=status%>
@@ -71,4 +72,5 @@
 	%>
 	</form>
 </body>
+
 </html>

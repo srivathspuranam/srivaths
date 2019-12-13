@@ -20,11 +20,11 @@ public class LoginController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
 		String name = request.getParameter("name");
-		String passwd = request.getParameter("passwd");
-		System.out.println(name + passwd);
-		if (!(name.isEmpty() || passwd.isEmpty())) {
-			String role = LoginService.authenticate(name, passwd);
-			if (!role.equals("failed")) {
+		String password = request.getParameter("password");
+		System.out.println(name + password);
+		if (!(name.isEmpty() || password.isEmpty())) {
+			String role = LoginService.authenticate(name, password);
+			if (!role.equals("fail")) {
 				mv = new ModelAndView("dashboard");
 				mv.addObject("role", role);
 				mv.addObject("name", name);

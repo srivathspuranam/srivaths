@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import com.pro.conn.connection;
 import com.pro.user.Users;
 
+
 public class RegisterService {
 
 	public static String register(Users u) {
