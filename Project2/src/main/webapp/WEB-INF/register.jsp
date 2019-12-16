@@ -38,6 +38,7 @@
 
 			</select><br> <br> Role: <select name="role" id="role">
 				<option value="Employee">Employee</option>
+				<option value="Manager">Manager</option>
 				<option value="Admin">Admin</option>
 			</select><br> <br> Manager:<select name="manager" id="manager">
 				<%

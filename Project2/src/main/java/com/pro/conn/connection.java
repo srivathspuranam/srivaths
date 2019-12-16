@@ -6,17 +6,17 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class connection {
-	private static SessionFactory sessionFactory = null;
+	private static SessionFactory sf = null;
 
 	public synchronized static SessionFactory getSessionFactory() {
-		if (sessionFactory == null) {
+		if (sf == null) {
 			try {
-				sessionFactory = new Configuration().configure().buildSessionFactory();
-				return sessionFactory;
+				sf = new Configuration().configure().buildSessionFactory();
+				return sf;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return sessionFactory;
+		return sf;
 	}
 }

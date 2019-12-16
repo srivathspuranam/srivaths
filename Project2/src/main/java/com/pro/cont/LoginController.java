@@ -24,7 +24,7 @@ public class LoginController {
 		System.out.println(name + password);
 		if (!(name.isEmpty() || password.isEmpty())) {
 			String role = LoginService.authenticate(name, password);
-			if (!role.equals("fail")) {
+			if (!role.equals("failed")) {
 				mv = new ModelAndView("dashboard");
 				mv.addObject("role", role);
 				mv.addObject("name", name);

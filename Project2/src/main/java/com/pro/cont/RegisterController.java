@@ -34,14 +34,14 @@ public class RegisterController {
 		Users user = new Users();
 		user.setId(Integer.parseInt(request.getParameter("manager")));
 		if (password.equals(repassword)) {
-			Users u = new Users();
-			u.setName(name);
-			u.setPassword(password);
-			u.setDob(date);
-			u.setGender(gender);
-			u.setRole(role);
-			u.setManager(user);
-			String register = RegisterService.register(u);
+			Users us = new Users();
+			us.setName(name);
+			us.setPassword(password);
+			us.setDob(date);
+			us.setGender(gender);
+			us.setRole(role);
+			us.setManager(user);
+			String register = RegisterService.register(us);
 			mv = new ModelAndView("register");
 			if (register.equals("fail")) {
 				mv.addObject("fail", "Registration Failed!!");

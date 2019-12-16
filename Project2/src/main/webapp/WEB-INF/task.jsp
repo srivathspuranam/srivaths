@@ -63,8 +63,6 @@
 	%>
 	<br>
 	<br>
-	<br>
-	<br>
 	<h1 style="text-align: center;">No Pending Tasks!</h1>
 	<hr>
 	<%

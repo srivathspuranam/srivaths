@@ -11,8 +11,8 @@ public class LoginService {
 	public static String authenticate(String name, String password) {
 		String role = null;
 		try {
-			SessionFactory sessionFactory = connection.getSessionFactory();
-			Session session = sessionFactory.openSession();
+			SessionFactory sf = connection.getSessionFactory();
+			Session session = sf.openSession();
 			Query query = session
 					.createQuery("select count(*) from Users u where u.name = :name and u.password = :password");
 			query.setParameter("name", name);

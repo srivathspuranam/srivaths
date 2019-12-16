@@ -12,8 +12,8 @@ public class TaskService {
 	public static String setStatus(String name, String tstatus) {
 		String result = null;
 		try {
-			SessionFactory sessionFactory = connection.getSessionFactory();
-			Session session = sessionFactory.openSession();
+			SessionFactory sf = connection.getSessionFactory();
+			Session session = sf.openSession();
 			Transaction transaction = session.beginTransaction();
 			Query query = session.createQuery("update Users set tstatus = :tstatus where name = :name");
 			query.setParameter("tstatus", tstatus);
@@ -35,8 +35,8 @@ public class TaskService {
 	public static String setTask(int id, String task, String assigned) {
 		String result = null;
 		try {
-			SessionFactory sessionFactory = connection.getSessionFactory();
-			Session session = sessionFactory.openSession();
+			SessionFactory sf = connection.getSessionFactory();
+			Session session = sf.openSession();
 			Transaction transaction = session.beginTransaction();
 			Query query = session
 					.createQuery("update Users set task = :task , assigned = :assigned where id = :id");
@@ -60,8 +60,8 @@ public class TaskService {
 	public static Users getStatus(String name) {
 		Users result = null;
 		try {
-			SessionFactory sessionFactory = connection.getSessionFactory();
-			Session session = sessionFactory.openSession();
+			SessionFactory sf = connection.getSessionFactory();
+			Session session = sf.openSession();
 			Query query = session.createQuery("from Users where assigned = :name");
 			query.setParameter("name", name);
 			result = (Users) query.uniqueResult();

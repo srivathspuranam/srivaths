@@ -12,14 +12,14 @@ import com.pro.user.Users;
 
 public class RegisterService {
 
-	public static String register(Users u) {
+	public static String register(Users us) {
 		String register = null;
 		Transaction tx = null;
 		try {
-			SessionFactory sessionFactory = connection.getSessionFactory();
-			Session session = sessionFactory.openSession();
+			SessionFactory sf = connection.getSessionFactory();
+			Session session = sf.openSession();
 			Transaction transaction = session.beginTransaction();
-			session.save(u);
+			session.save(us);
 			tx.commit();
 			register = "success";
 		} catch (Exception e) {

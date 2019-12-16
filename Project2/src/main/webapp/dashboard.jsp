@@ -88,7 +88,7 @@
 	<br>
 	<br>
 	<br>
-	<h1 style="text-align: center; color: red;">Please login first</h1>
+	<h1 style="text-align: center;">Please login first</h1>
 	<hr>
 	<br>
 	<br>
