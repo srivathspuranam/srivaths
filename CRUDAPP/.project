@@ -3,6 +3,7 @@
 	<name>CRUDAPP</name>
 	<comment></comment>
 	<projects>
+		<project>spring-web-5.2.2.RELEASE</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

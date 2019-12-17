@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.pro.user.Users"%>
-<%@page import="java.util.Iterator"%>
-<%@page import="org.hibernate.query.Query"%>
+<%@page import="com.pro.conn.connection"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Session"%>
+<%@page import="com.pro.model.Users"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="org.hibernate.query.Query"%>
+<%@page import="com.pro.service.PagesService"%>
+
 <%@page import="org.hibernate.SessionFactory"%>
-<%@page import="com.pro.conn.connection"%>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -42,10 +45,7 @@
 				<option value="Admin">Admin</option>
 			</select><br> <br> Manager:<select name="manager" id="manager">
 				<%
-					SessionFactory sf = connection.getSessionFactory();
-					Session s = sf.openSession();
-					Query query = s.createQuery("from Users");
-					List list = query.list();
+					List list = (List) request.getAttribute("list");
 					Iterator itr = list.iterator();
 					while (itr.hasNext()) {
 						Users users = (Users) itr.next();

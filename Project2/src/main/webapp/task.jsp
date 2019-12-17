@@ -1,16 +1,17 @@
-<%@page import="com.pro.user.Users"%>
+<%@page import="com.pro.model.Users"%>
+<%@page import="com.pro.conn.connection"%>
 <%@page import="org.hibernate.query.Query"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="org.hibernate.SessionFactory"%>
-<%@page import="com.pro.conn.connection"%>
+<%@page import="com.pro.service.PagesService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>Task Page</title>
+<meta charset="UTF-8">
+<title>Task Page</title>
 </head>
 
 <body>
@@ -20,11 +21,7 @@
 		String task = null;
 		String status = null;
 		try {
-			SessionFactory sf = connection.getSessionFactory();
-			Session s = sf.openSession();
-			Query query = s.createQuery("from Users u where u.name = :name");
-			query.setParameter("name", name);
-			Users user = (Users) query.uniqueResult();
+   Users user =(Users) request.getAttribute("result");
 			task = user.getTask();
 			status = user.getTstatus();
 		} catch (Exception e) {

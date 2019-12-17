@@ -15,13 +15,9 @@
 	<center>
 		<h1>You have successfully logged out!</h1>
 		<%
-		
-		String message = "You are logged out!";
-        request.setAttribute("Please login again.", message);
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
-      
-
-        
+			String message = "You are logged out!";
+			request.setAttribute("Please login again.", message);
+			response.sendRedirect(request.getContextPath() + "/index.jsp");
 		%>
 	</center>
 </body>

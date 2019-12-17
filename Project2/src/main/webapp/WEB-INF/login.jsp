@@ -4,8 +4,8 @@
 <html>
 
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Login Page</title>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
 </head>
 
 <body>
@@ -13,8 +13,8 @@
 		<br>
 		<h1 style="text-align: center;">Sailotech Portal</h1>
 		<hr>
-		<h3 style="text-align: center; ">${message}</h3>
-        <h3 style="text-align: center; ">${logout}</h3>
+		<h3 style="text-align: center;">${message}</h3>
+		<h3 style="text-align: center;">${logout}</h3>
 		<br> <br>
 		<h3 style="text-align: center;">
 			Name:<input type="text" name="name"><br> <br>

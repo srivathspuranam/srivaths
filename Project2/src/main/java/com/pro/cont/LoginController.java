@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pro.service.LoginService;
+
 @Controller
 public class LoginController {
 
@@ -19,6 +21,7 @@ public class LoginController {
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+		System.out.println(mv);
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		System.out.println(name + password);

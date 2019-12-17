@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pro.user.Users;
+import com.pro.model.Users;
+import com.pro.service.RegisterService;
 
 @Controller
 public class RegisterController {
