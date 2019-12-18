@@ -1,5 +1,6 @@
 package com.pro.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,17 +14,27 @@ import javax.persistence.Table;
 public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column
 	private int id;
+	@Column
 	private String name;
+	@Column
 	private String password;
+	@Column
 	private String gender;
+	@Column
 	private String dob;
+	@Column
 	private String role;
 	@ManyToOne
 	@JoinColumn(name = "manager")
+	@Column
 	private Users manager;
+	@Column
 	private String task;
+	@Column
 	private String tstatus;
+	@Column
 	private String assigned;
 
 	public Users getManager() {

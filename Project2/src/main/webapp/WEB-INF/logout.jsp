@@ -9,7 +9,7 @@
 <body>
 	<%
 		session.removeAttribute("id");
-		session.removeAttribute("passwd");
+		session.removeAttribute("password");
 		session.invalidate();
 	%>
 	<center>

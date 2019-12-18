@@ -21,72 +21,72 @@ public class TaskController {
 	}
 
 	@RequestMapping(value = "task", method = RequestMethod.POST)
-	public ModelAndView task(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+	public ModelAndView task(HttpServletRequest request, HttpServletResponse response, ModelAndView model) {
 		HttpSession session = request.getSession(false);
 		String name = (String) session.getAttribute("name");
 		String tstatus = request.getParameter("status_value");
 		if (!tstatus.isEmpty()) {
 			String result = TaskService.setStatus(name, tstatus);
 			if (result.equals("success")) {
-				mv = new ModelAndView("task");
-				mv.addObject("success", "Updated status!");
+				model = new ModelAndView("task");
+				model.addObject("success", "Updated status!");
 			} else if (result.equals("fail")) {
-				mv = new ModelAndView("task");
-				mv.addObject("fail", "Failed updating status!");
+				model = new ModelAndView("task");
+				model.addObject("fail", "Failed updating status!");
 			} else {
-				mv = new ModelAndView("task");
-				mv.addObject("fail", result);
+				model = new ModelAndView("task");
+				model.addObject("fail", result);
 			}
 		} else {
-			mv = new ModelAndView("task");
-			mv.addObject("fail", "No Status");
+			model = new ModelAndView("task");
+			model.addObject("fail", "No Status");
 		}
-		return mv;
+		return model;
 	}
 
 	@RequestMapping(value = "newtask", method = RequestMethod.POST)
-	public ModelAndView newtask(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+	public ModelAndView newtask(HttpServletRequest request, HttpServletResponse response, ModelAndView model) {
 		String task = request.getParameter("task");
 		int id = Integer.parseInt(request.getParameter("employee"));
 		String assigned = request.getParameter("assigned");
 		if (!task.isEmpty()) {
 			String result = TaskService.setTask(id, task, assigned);
 			if (result.equals("success")) {
-				mv = new ModelAndView("newtask");
-				mv.addObject("success", "Status Updated!");
+				model = new ModelAndView("newtask");
+				model.addObject("success", "Status Updated!");
 			} else if (result.equals("fail")) {
-				mv = new ModelAndView("newtask");
-				mv.addObject("fail", "Failed updating status!");
+				model = new ModelAndView("newtask");
+				model.addObject("fail", "Failed updating status!");
 			} else {
-				mv = new ModelAndView("newtask");
-				mv.addObject("fail", result);
+				model = new ModelAndView("newtask");
+				model.addObject("fail", result);
 			}
 		} else {
-			mv = new ModelAndView("newtask");
-			mv.addObject("fail", "No Status");
+			model = new ModelAndView("newtask");
+			model.addObject("fail", "No Status");
 		}
-		return mv;
+		return model;
 	}
 
 	@RequestMapping(value = "getstatus", method = RequestMethod.GET)
-	public ModelAndView getstatus(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+	public ModelAndView getstatus(HttpServletRequest request, HttpServletResponse response, ModelAndView model) {
 		HttpSession session = request.getSession(false);
 		String name = (String) session.getAttribute("name");
 		if (name != null) {
 			Users task = TaskService.getStatus(name);
 			if (task != null) {
-				mv = new ModelAndView("status");
-				mv.addObject("employee", task.getName());
-				mv.addObject("task", task.getTask());
-				mv.addObject("status_value", task.getTstatus());
+				model = new ModelAndView("status");
+				model.addObject("employee", task.getName());
+				model.addObject("task", task.getTask());
+				model.addObject("status_value", task.getTstatus());
 			} else {
-				mv = new ModelAndView("status");
-				mv.addObject("ok", "No task Assigned yet");
+				model = new ModelAndView("status");
+				model.addObject("ok", "No task Assigned yet");
 			}
 		} else {
-			mv = new ModelAndView("login");
-			mv.addObject("fail", "Please login first!");
+			model = new ModelAndView("login");
+			model.addObject("fail", "Please login first!");
 		}
-		return mv;
+		return model;
 	}
 }

@@ -25,7 +25,7 @@ public class RegisterController {
 	}
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public ModelAndView register(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+	public ModelAndView register(HttpServletRequest request, HttpServletResponse response, ModelAndView model) {
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String repassword = request.getParameter("repassword");
@@ -43,17 +43,17 @@ public class RegisterController {
 			us.setRole(role);
 			us.setManager(user);
 			String register = RegisterService.register(us);
-			mv = new ModelAndView("register");
+			model = new ModelAndView("register");
 			if (register.equals("fail")) {
-				mv.addObject("fail", "Registration Failed!!");
+				model.addObject("fail", "Registration Failed!!");
 			} else {
-				mv.addObject("success", "Registration Sucessful.");
+				model.addObject("success", "Registration Sucessful.");
 			}
-			return mv;
+			return model;
 		} else {
-			mv = new ModelAndView("register");
-			mv.addObject("message", "Passwords do not match");
-			return mv;
+			model = new ModelAndView("register");
+			model.addObject("message", "Passwords do not match");
+			return model;
 		}
 
 	}

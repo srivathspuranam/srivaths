@@ -20,32 +20,32 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
-		System.out.println(mv);
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView model) {
+		System.out.println(model);
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		System.out.println(name + password);
 		if (!(name.isEmpty() || password.isEmpty())) {
 			String role = LoginService.authenticate(name, password);
 			if (!role.equals("failed")) {
-				mv = new ModelAndView("dashboard");
-				mv.addObject("role", role);
-				mv.addObject("name", name);
+				model = new ModelAndView("dashboard");
+				model.addObject("role", role);
+				model.addObject("name", name);
 				HttpSession session = request.getSession();
 				session.setAttribute("role", role);
 				session.setAttribute("name", name);
-				mv.addObject("session", session);
+				model.addObject("session", session);
 			} else if (role.equals("error")) {
-				mv = new ModelAndView("login");
-				mv.addObject("message", "Server Busy!");
+				model = new ModelAndView("login");
+				model.addObject("message", "Server Busy!");
 			} else {
-				mv = new ModelAndView("login");
-				mv.addObject("message", "Wrong username or password!");
+				model = new ModelAndView("login");
+				model.addObject("message", "Wrong username or password!");
 			}
 		} else {
-			mv = new ModelAndView("login");
-			mv.addObject("message", "InComplete Details.");
+			model = new ModelAndView("login");
+			model.addObject("message", "InComplete Details.");
 		}
-		return mv;
+		return model;
 	}
 }

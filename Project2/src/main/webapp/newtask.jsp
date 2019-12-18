@@ -12,8 +12,8 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<title>New Tasks</title>
+	<meta charset="UTF-8">
+	<title>New Tasks</title>
 </head>
 
 <body>
@@ -47,12 +47,11 @@
 					}
 					}
 				%>
-			
+
 		</div>
 		<br> <input type="text" name="assigned" value="<%=name%>" hidden>
 		<h3 style="text-align: center;">
-			Assign :
-			<button type="submit">Assign</button>
+			Assign :<button type="submit">Assign</button>
 		</h3>
 	</form>
 </body>

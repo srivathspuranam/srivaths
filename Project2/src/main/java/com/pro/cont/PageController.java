@@ -18,43 +18,43 @@ import com.pro.service.PagesService;
 public class PageController {
 
 	@RequestMapping(value = "registerpage", method = RequestMethod.GET)
-	public ModelAndView reg(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+	public ModelAndView registerpage(HttpServletRequest request, HttpServletResponse response, ModelAndView model) {
 		try {
 			List list = PagesService.getList();
-			mv.setViewName("register.jsp");
-			mv.addObject("list", list);
+			model.setViewName("register.jsp");
+			model.addObject("list", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return mv;
+		return model;
 	}
 
 	@RequestMapping(value = "taskpage", method = RequestMethod.GET)
-	public ModelAndView etask(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+	public ModelAndView taskpage(HttpServletRequest request, HttpServletResponse response, ModelAndView model) {
 		try {
 			HttpSession session = request.getSession(false);
 			String name = (String) session.getAttribute("name");
 			Users result = PagesService.getResult(name);
-			mv.setViewName("task.jsp");
-			mv.addObject("result", result);
+			model.setViewName("task.jsp");
+			model.addObject("result", result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return mv;
+		return model;
 	}
 
 	@RequestMapping(value = "newtaskpage", method = RequestMethod.GET)
-	public ModelAndView ctask(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+	public ModelAndView newtaskpage(HttpServletRequest request, HttpServletResponse response, ModelAndView model) {
 		try {
 			HttpSession session = request.getSession(false);
 			String name = (String) session.getAttribute("name");
 			List list = PagesService.getList();
-			mv.setViewName("newtask.jsp");
-			mv.addObject("list", list);
-			mv.addObject("name", name);
+			model.setViewName("newtask.jsp");
+			model.addObject("list", list);
+			model.addObject("name", name);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return mv;
+		return model;
 	}
 }

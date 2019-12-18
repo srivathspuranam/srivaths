@@ -18,16 +18,16 @@ public class LogoutController {
 	}
 
 	@RequestMapping(value = "logout", method = RequestMethod.POST)
-	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, ModelAndView model) {
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			session.invalidate();
-			mv = new ModelAndView("login");
-			mv.addObject("message", "Please login first!");
+			model = new ModelAndView("login");
+			model.addObject("message", "Please login first!");
 		} else {
-			mv = new ModelAndView("login");
-			mv.addObject("logout", "logged out!");
+			model = new ModelAndView("login");
+			model.addObject("logout", "logged out!");
 		}
-		return mv;
+		return model;
 	}
 }
