@@ -6,9 +6,17 @@ import javax.persistence.Id;
 @Entity
 public class ProductBean {
 	@Id
+	private int productid;
 	private String productname;
 	private String productcost;
 	private int productquantity;
+	public int getProductid() {
+		return productid;
+	}
+
+	public void setProductid(int productid) {
+		this.productid = productid;
+	}
 
 	public String getProductname() {
 		return productname;
@@ -36,7 +44,7 @@ public class ProductBean {
 
 	@Override
 	public String toString() {
-		return "ProductBean [productname=" + productname + ", productcost=" + productcost + ", productquantity="
-				+ productquantity + "]";
+		return "ProductBean [productid=" + productid + ", productname=" + productname + ", productcost=" + productcost
+				+ ", productquantity=" + productquantity + "]";
 	}
 }

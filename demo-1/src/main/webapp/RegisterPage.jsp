@@ -15,14 +15,15 @@
 	<form action="/register" method="POST">
 		<hr>
 		<h1 style="text-align: center;">Shopping Portal.in</h1>
-		<hr>
-		<h2 style="text-align: center;">Create account</h2>
-		<br>
+		<hr><br><br>
+		<h3 style="text-align: center; color: red;">${message}</h3><br><br>
+		<h2 style="text-align: center;">Create account</h2><br>
 		<h3 style="text-align: center;">
 			Name:<input type="text" name="name"><br><br>
 			Password:<input type="password" name="password"><br><br>
 			Date Of Birth: <input type="date" name="date"><br><br>
 			Mobile Number: <input type="text" name="mobilenumber"><br><br>
+			Address: <input type="text" name="address"><br><br>
 		</h3>
 		<h3 style="text-align: center;">
 			<input type="submit" value="Submit" id="submit"> <input type="reset" value="Clear">

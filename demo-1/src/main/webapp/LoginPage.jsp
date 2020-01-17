@@ -10,12 +10,16 @@
 
 <body>
 	<h1 style="text-align: center;">Welcome to Shopping Portal</h1>
-	<form action="/login" method="POST">
+	<form action="/login" method="POST"><br><br>
+		<h3 style="text-align: center; color: red;">${message}</h3><br><br>
 		<h3 style="text-align: center;">
 			Name:<input type="text" name="name" /><br>
 			Password:<input type="password" password="password" /><br><br>
 			<input type="submit" value="Submit" />
 		</h3>
+		<br><br>
+		<h3 style="text-align: center;"><input type="submit" value="View Products"
+				onclick="window.location='Products.jsp';" /></h3>
 		<br><br>
 		<h4 style="text-align: center;"> New to Shopping Portal?<br>
 			<input type="submit" value="Create a Shopping Portal account"

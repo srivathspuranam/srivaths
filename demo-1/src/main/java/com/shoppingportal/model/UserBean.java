@@ -1,7 +1,10 @@
 package com.shoppingportal.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -12,17 +15,11 @@ public class UserBean {
 	private String date;
 	private String mobilenumber;
 	private String address; 
-	@OneToOne
-	private String shoppingcart;
-	private String Transactions;  
-	public String getShoppingcart() {
-		return shoppingcart;
-	}
-
-	public void setShoppingcart(String shoppingcart) {
-		this.shoppingcart = shoppingcart;
-	}
-
+	@OneToMany
+	private List<YCartBean> shoppingcart;
+	@OneToMany
+	private List<TransactionBean> Transactions;  
+	
 	public String getName() {
 		return name;
 	}
@@ -63,11 +60,11 @@ public class UserBean {
 		this.address = address;
 	}
 
-	public String getTransactions() {
+	public List getTransactions() {
 		return Transactions;
 	}
 
-	public void setTransactions(String transactions) {
+	public void setTransactions(List transactions) {
 		Transactions = transactions;
 	}
 
@@ -76,4 +73,5 @@ public class UserBean {
 		return "UserBean [name=" + name + ", password=" + password + ", date=" + date + ", mobilenumber=" + mobilenumber
 				+ ", address=" + address + ", shoppingcart=" + shoppingcart + ", Transactions=" + Transactions + "]";
 	}
+	
 }

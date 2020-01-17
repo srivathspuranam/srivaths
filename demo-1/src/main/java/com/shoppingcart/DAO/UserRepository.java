@@ -19,4 +19,9 @@ public interface UserRepository extends JpaRepository<UserBean, String> {
 	@Query("delete from UserBean ub where ub.name=?")
 	void deleteByName(String name);
 
+	List<UserBean> findByName(String name);
+
+	@Query("from UserBean ub where ub.name=?")
+	UserBean getAddress(String address);
+
 }
