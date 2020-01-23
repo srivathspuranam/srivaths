@@ -14,21 +14,20 @@
     <hr>
     <table style="width:100%" id="product">
         <tr>
-            <th>Order No</th>
             <th>Transaction Id</th>
             <th>Date of Purchase</th>
             <th>Address</th>
             <th>Total</th>
             <th>Status</th>
         </tr>
-        <c:forEach items="${tx}" var="ts" varStatus="roll">
+        <c:forEach items="${transaction}" var="od" varStatus="roll">
             <tr>
                 <td style="text-align: center;">${roll.count}</td>
-                <td style="text-align: center;">${ts.txid}</td>
-                <td style="text-align: center;">${ts.date}</td>
-                <td style="text-align: center;">${ts.address}</td>
-                <td style="text-align: center;">${ts.total}</td>
-                <td style="text-align: center;">${ts.status}</td>
+                <td style="text-align: center;">${od.transactionid}</td>
+                <td style="text-align: center;">${od.date}</td>
+                <td style="text-align: center;">${od.address}</td>
+                <td style="text-align: center;">${od.total}</td>
+                <td style="text-align: center;">${od.status}</td>
             </tr>
         </c:forEach>
     </table>

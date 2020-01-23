@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.shoppingportal.model.ProductBean;
 
 @Repository
-public interface ProductRepository extends JpaRepository<ProductBean, String> {
+public interface ProductRepository extends JpaRepository<ProductBean, Integer> {
 
 }

@@ -1,8 +1,13 @@
+
 package com.shoppingportal.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -13,13 +18,19 @@ public class UserBean {
 	private String name;
 	private String password;
 	private String date;
-	private String mobilenumber;
-	private String address; 
-	@OneToMany
+	private Long mobilenumber;
+	private String address;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<YCartBean> shoppingcart;
-	@OneToMany
-	private List<TransactionBean> Transactions;  
-	
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<TransactionBean> Transactions;
+
+	@Override
+	public String toString() {
+		return "UserBean [name=" + name + ", password=" + password + ", date=" + date + ", mobilenumber=" + mobilenumber
+				+ ", address=" + address + ", shoppingcart=" + shoppingcart + ", Transactions=" + Transactions + "]";
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -44,11 +55,11 @@ public class UserBean {
 		this.date = date;
 	}
 
-	public String getMobilenumber() {
+	public Long getMobilenumber() {
 		return mobilenumber;
 	}
 
-	public void setMobilenumber(String mobilenumber) {
+	public void setMobilenumber(Long mobilenumber) {
 		this.mobilenumber = mobilenumber;
 	}
 
@@ -60,18 +71,20 @@ public class UserBean {
 		this.address = address;
 	}
 
-	public List getTransactions() {
+	public List<YCartBean> getShoppingcart() {
+		return shoppingcart;
+	}
+
+	public void setShoppingcart(List<YCartBean> shoppingcart) {
+		this.shoppingcart = shoppingcart;
+	}
+
+	public List<TransactionBean> getTransactions() {
 		return Transactions;
 	}
 
-	public void setTransactions(List transactions) {
+	public void setTransactions(List<TransactionBean> transactions) {
 		Transactions = transactions;
 	}
 
-	@Override
-	public String toString() {
-		return "UserBean [name=" + name + ", password=" + password + ", date=" + date + ", mobilenumber=" + mobilenumber
-				+ ", address=" + address + ", shoppingcart=" + shoppingcart + ", Transactions=" + Transactions + "]";
-	}
-	
 }

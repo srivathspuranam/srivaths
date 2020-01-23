@@ -6,11 +6,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shoppingportal.model.AddressBean;
 import com.shoppingportal.model.UserBean;
+import com.shoppingportal.model.YCartBean;
 import com.shoppingportal.service.UserService;
 
 @Controller
@@ -19,9 +23,10 @@ public class UserController {
 	@Autowired
 	UserService us;
 
-	@GetMapping(path = "/")
+	@GetMapping
 	public ModelAndView start(ModelAndView model) {
-		model.setViewName("login");
+		model.setViewName("LoginPage");
+		// us.data();
 		return model;
 	}
 
@@ -32,19 +37,21 @@ public class UserController {
 	}
 
 	@GetMapping("/logout")
-	public ModelAndView logout (ModelAndView model, HttpServletRequest request) {
-		model=us.logout(model, request);
+	public ModelAndView logout(ModelAndView model, HttpServletRequest request) {
+		model = us.logout(model, request);
 		return model;
 	}
 
 	@GetMapping("/register")
-	public String register() {
-		return ("register");
+	public ModelAndView register(ModelAndView model) {
+		model.setViewName("RegisterPage");
+		return model;
 	}
 
 	@PostMapping("/register")
 	public ModelAndView register(UserBean ub, ModelAndView model) {
 		model = us.register(ub, model);
+		System.out.println(ub.getMobilenumber());
 		return model;
 	}
 
@@ -54,9 +61,45 @@ public class UserController {
 		return model;
 	}
 
+	@GetMapping("/profile")
+	public ModelAndView profile(ModelAndView model, HttpServletRequest request, UserBean ub) {
+		model = us.profile(ub, model, request);
+		return model;
+	}
+	
 	@GetMapping("/products")
 	public ModelAndView products(ModelAndView model, HttpServletRequest request) {
 		model = us.products(model, request);
+		return model;
+	}
+
+	@GetMapping("/orders")
+	public ModelAndView orders(ModelAndView model, HttpServletRequest request) {
+		model = us.orders(model, request);
+		return model;
+	}
+
+	@PostMapping("/addtocart")
+	public ModelAndView addtocart(ModelAndView model, HttpServletRequest request, YCartBean cart) {
+		model = us.addtocart(model, request, cart);
+		return model;
+	}
+
+	@PostMapping("/removeproduct")
+	public void removeproduct(YCartBean ycart, HttpServletRequest request) {
+		us.removeproduct(ycart, request);
+
+	}
+
+	@PostMapping("cancelorder")
+	public ModelAndView cancelorder(ModelAndView model, HttpServletRequest request) {
+		model = us.cancelorder(model, request);
+		return model;
+	}
+
+	@GetMapping("/yourcart")
+	public ModelAndView yourcart(ModelAndView model, HttpServletRequest request) {
+		model = us.yourcart(model, request);
 		return model;
 	}
 
@@ -66,26 +109,15 @@ public class UserController {
 		return model;
 	}
 	
-	@GetMapping("/orders")
-	public ModelAndView orders(ModelAndView model, HttpServletRequest request) {
-		model=us.orders(model, request);
+	@GetMapping("editprofile")
+	public ModelAndView editprofile(ModelAndView model,HttpServletRequest request) {
+		model= us.editprofile(model, request);
 		return model;
 	}
 
+/*	@PostMapping("/addaddress")
+	public void addaddress(AddressBean address, HttpServletRequest request) {
+		us.addaddress(address, request);
+	}*/
 	
-	
-	
-	
-	
-	
-	
-	/*
-	 * @GetMapping("checkout") public String checkout() { return("checkout"); }
-	 * 
-	 * @PostMapping("/checkout") public ModelAndView checkout(ModelAndView model,
-	 * HttpSession session, ) {
-	 * 
-	 * }
-	 */
-
 }

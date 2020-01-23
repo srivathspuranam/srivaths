@@ -1,15 +1,26 @@
 package com.shoppingportal.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class ProductBean {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int productid;
 	private String productname;
-	private String productcost;
-	private int productquantity;
+	private int productcost;
+	private String productcategory;
+	private String about;
+
+	@Override
+	public String toString() {
+		return "ProductBean [productid=" + productid + ", productname=" + productname + ", productcost=" + productcost
+				+ ", about=" + about + "]";
+	}
+
 	public int getProductid() {
 		return productid;
 	}
@@ -26,25 +37,28 @@ public class ProductBean {
 		this.productname = productname;
 	}
 
-	public String getProductcost() {
+	public int getProductcost() {
 		return productcost;
 	}
 
-	public void setProductcost(String productcost) {
+	public void setProductcost(int productcost) {
 		this.productcost = productcost;
 	}
 
-	public int getProductquantity() {
-		return productquantity;
+	public String getAbout() {
+		return about;
 	}
 
-	public void setProductquantity(int productquantity) {
-		this.productquantity = productquantity;
+	public void setAbout(String about) {
+		this.about = about;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductBean [productid=" + productid + ", productname=" + productname + ", productcost=" + productcost
-				+ ", productquantity=" + productquantity + "]";
+	public String getProductcategory() {
+		return productcategory;
 	}
+
+	public void setProductcategory(String productcategory) {
+		this.productcategory = productcategory;
+	}
+	
 }

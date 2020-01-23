@@ -16,7 +16,7 @@
 		<hr>
 		<h1 style="text-align: center;">Shopping Portal.in</h1>
 		<hr><br><br>
-		<h3 style="text-align: center; color: red;">${message}</h3><br><br>
+		<h3 style="text-align: center; color: green;">${message}</h3><br><br>
 		<h2 style="text-align: center;">Create account</h2><br>
 		<h3 style="text-align: center;">
 			Name:<input type="text" name="name"><br><br>
@@ -26,8 +26,8 @@
 			Address: <input type="text" name="address"><br><br>
 		</h3>
 		<h3 style="text-align: center;">
-			<input type="submit" value="Submit" id="submit"> <input type="reset" value="Clear">
-		</h3> <br><br><br>
+			<input type="submit" value="Submit"> <input type="reset" value="Clear">
+		</h3> <br>
 		<h4 style="text-align: center;">Already have an account? <a href="LoginPage.jsp">Sign in</a></h4>
 	</form>
 </body>
