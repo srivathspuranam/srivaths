@@ -26,7 +26,7 @@
                 Total : <c:out value="${tb.total}"></c:out><br><br>
                 <hr>
                 <input type="button" onclick="window.location.href='dashboard';" value="Home Page">
-                </h3>
+        </h3>
 </body>
 
 </html>

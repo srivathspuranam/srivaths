@@ -72,6 +72,8 @@ public class UserService {
 		 */
 	}
 
+	// -------------------------------------USER-----------------------------------------------------------------------------------
+
 	public ModelAndView login(String name, String password, ModelAndView model, HttpSession session) {
 		UserBean user = ur.findByNameAndPassword(name, password);
 		session.setAttribute("user", user);
@@ -97,19 +99,24 @@ public class UserService {
 		return model;
 	}
 
-	public ModelAndView register(UserBean ub, ModelAndView model) {
-		if (!(ub.getName().isEmpty() && ub.getPassword().isEmpty())) {
+	public ModelAndView register(UserBean ub, ModelAndView model, HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		UserBean user = (UserBean) session.getAttribute("user");
+		if (user == null) {
 			model.setViewName("RegisterPage");
-
 			List<UserBean> userdata = ur.findByMobilenumber(ub.getMobilenumber());
 			if (userdata.isEmpty()) {
 				ur.save(ub);
 				model.addObject("message", "You are successfully registered");
-				System.out.println(ub.getMobilenumber());
 			} else {
 				model.addObject("message", "Your account is already registered");
 				model.setViewName("LoginPage");
 			}
+		} else {
+			ur.save(ub);
+			session.setAttribute("user", ub);
+			model.addObject("message", "Profile is successfully updated");
+			model.setViewName("Profile");
 		}
 		return model;
 	}
@@ -124,6 +131,31 @@ public class UserService {
 		}
 		return model;
 	}
+
+	public ModelAndView profile(UserBean ub, ModelAndView model, HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			model.setViewName("Profile");
+		} else {
+			model.setViewName("LoginPage");
+			model.addObject("message", "Please login");
+		}
+		return model;
+	}
+
+	public ModelAndView editprofile(ModelAndView model, HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			model.setViewName("EditP");
+			model.addObject("message", "Your profile is successfully updated");
+		} else {
+			model.setViewName("LoginPage");
+			model.addObject("message", "Try again after sometime");
+		}
+		return model;
+	}
+
+	// ------------------------------------------PRODUCT-----------------------------------------------
 
 	public ModelAndView products(ModelAndView model, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
@@ -178,6 +210,12 @@ public class UserService {
 
 	public ModelAndView yourcart(ModelAndView model, HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
+		UserBean verify = (UserBean) session.getAttribute("user");
+		if (verify == null) {
+			model.setViewName("LoginPage");
+			model.addObject("message", "Please login to place your order");
+			return model;
+		}
 		if (session == null) {
 			model.setViewName("LoginPage");
 			model.addObject("message", "please login first");
@@ -199,7 +237,7 @@ public class UserService {
 			UserBean user = (UserBean) session.getAttribute("user");
 			List<YCartBean> ycart = ur.findByMobilenumber(user.getMobilenumber()).get(0).getShoppingcart();
 			List<YCartBean> newcart = new ArrayList<YCartBean>();
-			
+
 			for (YCartBean temp : ycart) {
 				if (!(temp.getId() == cart.getId())) {
 					System.out.println(temp);
@@ -238,8 +276,15 @@ public class UserService {
 		return model;
 	}
 
-	public ModelAndView pay(ModelAndView model, HttpServletRequest request, String address, String add, Integer total) {
+	public ModelAndView pay(ModelAndView model, HttpServletRequest request, String address, String newaddress,
+			Integer total) {
 		HttpSession session = request.getSession(false);
+		UserBean verify = (UserBean) session.getAttribute("user");
+		if (verify == null) {
+			model.setViewName("LoginPage");
+			model.addObject("message", "Please login to place your order");
+			return model;
+		}
 		if (session != null) {
 			UserBean user = (UserBean) session.getAttribute("user");
 			TransactionBean tb = new TransactionBean();
@@ -248,7 +293,12 @@ public class UserService {
 			tb.setDate(date.toString());
 			List<YCartBean> ycart = new ArrayList<YCartBean>();
 			user = ur.findByNameAndPassword(user.getName(), user.getPassword());
-
+			if (!newaddress.trim().isEmpty()) {
+				String newadd = newaddress;
+				tb.setAddress(newadd);
+			} else {
+				tb.setAddress(address);
+			}
 			List<YCartBean> cart = user.getShoppingcart();
 			for (YCartBean temp : cart) {
 				YCartBean items = new YCartBean();
@@ -260,7 +310,6 @@ public class UserService {
 			tb.setItems(ycart);
 			tb.setTotal(total);
 			tb.setStatus("Success");
-			tb.setAddress(address);
 			System.out.println(user.getAddress());
 
 			List<TransactionBean> transactions = user.getTransactions();
@@ -279,45 +328,6 @@ public class UserService {
 			model.addObject("message", "Session expired, Please login again!");
 		}
 		return model;
-	}
 
-	public ModelAndView profile(UserBean ub, ModelAndView model, HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-			model.setViewName("Profile");
-		} else {
-			model.setViewName("LoginPage");
-			model.addObject("message", "Please login");
-		}
-		return model;
 	}
-
-	public ModelAndView editprofile(ModelAndView model, HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-	if(session != null) {
-		model.setViewName("EditP");
-		System.out.println(session);
-	}else {
-		model.setViewName("LoginPage");
-		model.addObject("message", "Try again after sometime");
-	}
-		return model;
-	}
-	
-
-	/*public void addaddress(AddressBean address, HttpServletRequest request) {
-		HttpSession session=request.getSession(false);
-		if (session != null) {
-			UserBean user = (UserBean) session.getAttribute("user");
-		List<AddressBean> addaddress = ur.findByMobilenumber(user.getMobilenumber()).get(0).getAddress();
-		List<AddressBean> updateaddress = new ArrayList<AddressBean>();
-		for (AddressBean temp:addaddress) {
-			updateaddress.add(temp);
-		}updateaddress.add(address);
-		user.setAddress(updateaddress);
-		ur.save(user);	
-		}
-		
-	}*/
-
 }

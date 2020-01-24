@@ -60,5 +60,5 @@ public class ProductBean {
 	public void setProductcategory(String productcategory) {
 		this.productcategory = productcategory;
 	}
-	
+
 }

@@ -30,6 +30,8 @@ public class UserController {
 		return model;
 	}
 
+//---------------------------------------------USER--------------------------------------------------
+
 	@PostMapping("/login")
 	public ModelAndView security(String name, String password, ModelAndView model, HttpSession session) {
 		model = us.login(name, password, model, session);
@@ -49,9 +51,9 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-	public ModelAndView register(UserBean ub, ModelAndView model) {
-		model = us.register(ub, model);
-		System.out.println(ub.getMobilenumber());
+	public ModelAndView register(UserBean ub, ModelAndView model, HttpServletRequest request) {
+		model = us.register(ub, model, request);
+
 		return model;
 	}
 
@@ -66,7 +68,14 @@ public class UserController {
 		model = us.profile(ub, model, request);
 		return model;
 	}
-	
+
+	@GetMapping("editprofile")
+	public ModelAndView editprofile(ModelAndView model, HttpServletRequest request) {
+		model = us.editprofile(model, request);
+		return model;
+	}
+//---------------------------------------------------PRODUCT--------------------------------
+
 	@GetMapping("/products")
 	public ModelAndView products(ModelAndView model, HttpServletRequest request) {
 		model = us.products(model, request);
@@ -104,20 +113,11 @@ public class UserController {
 	}
 
 	@PostMapping("/pay")
-	public ModelAndView pay(ModelAndView model, HttpServletRequest request, String address, String add, Integer total) {
-		model = us.pay(model, request, address, add, total);
-		return model;
-	}
-	
-	@GetMapping("editprofile")
-	public ModelAndView editprofile(ModelAndView model,HttpServletRequest request) {
-		model= us.editprofile(model, request);
+	public ModelAndView pay(ModelAndView model, HttpServletRequest request, String address, String newaddress,
+			Integer total) {
+		model = us.pay(model, request, address, newaddress, total);
+		System.out.println(address + newaddress + total);
 		return model;
 	}
 
-/*	@PostMapping("/addaddress")
-	public void addaddress(AddressBean address, HttpServletRequest request) {
-		us.addaddress(address, request);
-	}*/
-	
 }

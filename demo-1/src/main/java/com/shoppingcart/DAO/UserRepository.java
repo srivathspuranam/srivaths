@@ -16,7 +16,6 @@ public interface UserRepository extends JpaRepository<UserBean, String> {
 	UserBean findByNameAndPassword(String name, String password);
 
 	List<UserBean> findByMobilenumber(Long mobilenumber);
-	
 
 	@Query("delete from UserBean ub where ub.name=?1")
 	void deleteByName(String name);

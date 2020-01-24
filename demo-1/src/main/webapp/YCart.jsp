@@ -68,11 +68,11 @@
                         <c:out value="${total}"></c:out>
                     </div>
                     <br><br>
-                    Shipping Address : <br>
-                    <c:out value="${user.address}"></c:out><br><br>
+                    Deliver to your Address ?<br><input type="text" name="address" value="${user.address}"
+                        readonly><br><br>
                     <input type="text" name="total" id="total" hidden value="<c:out value=" ${total}"></c:out>">
-                    Or Add address: <br><br><br>
-                    <textarea name="add" id="add" cols="70" rows="10"></textarea>
+                    change my shipping address:<br>
+                    <textarea name="newaddress" cols="50" rows="10"></textarea>
                     <br><br>
                     <input type="submit" value="pay" id="pay">
                 </h3>

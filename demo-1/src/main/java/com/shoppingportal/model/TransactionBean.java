@@ -15,7 +15,7 @@ public class TransactionBean {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String transactionid;
-	private String date; 	
+	private String date;
 	private String address;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<YCartBean> items;
