@@ -14,6 +14,7 @@
     <hr>
     <table style="width:100%" id="product">
         <tr>
+            <th>Order No.</th>
             <th>Transaction Id</th>
             <th>Date of Purchase</th>
             <th>Address</th>
@@ -33,7 +34,7 @@
     </table>
     <br><br>
     <h3 style="text-align: center;">
-        Return Home : <input type="button" onclick="window.location.href='dashboard';" value="home">
+        Go Home : <input type="button" onclick="window.location='dashboard';" value="home">
     </h3>
 </body>
 

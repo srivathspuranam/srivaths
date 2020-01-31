@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.shoppingportal.model.AddressBean;
 import com.shoppingportal.model.UserBean;
 import com.shoppingportal.model.YCartBean;
+import com.shoppingportal.service.ProductService;
 import com.shoppingportal.service.UserService;
 
 @Controller
@@ -23,10 +24,14 @@ public class UserController {
 	@Autowired
 	UserService us;
 
+	@Autowired
+	ProductService ps;
+
 	@GetMapping
 	public ModelAndView start(ModelAndView model) {
 		model.setViewName("LoginPage");
 		// us.data();
+		// ps.data();
 		return model;
 	}
 
@@ -74,13 +79,6 @@ public class UserController {
 		model = us.editprofile(model, request);
 		return model;
 	}
-//---------------------------------------------------PRODUCT--------------------------------
-
-	@GetMapping("/products")
-	public ModelAndView products(ModelAndView model, HttpServletRequest request) {
-		model = us.products(model, request);
-		return model;
-	}
 
 	@GetMapping("/orders")
 	public ModelAndView orders(ModelAndView model, HttpServletRequest request) {
@@ -91,18 +89,6 @@ public class UserController {
 	@PostMapping("/addtocart")
 	public ModelAndView addtocart(ModelAndView model, HttpServletRequest request, YCartBean cart) {
 		model = us.addtocart(model, request, cart);
-		return model;
-	}
-
-	@PostMapping("/removeproduct")
-	public void removeproduct(YCartBean ycart, HttpServletRequest request) {
-		us.removeproduct(ycart, request);
-
-	}
-
-	@PostMapping("cancelorder")
-	public ModelAndView cancelorder(ModelAndView model, HttpServletRequest request) {
-		model = us.cancelorder(model, request);
 		return model;
 	}
 

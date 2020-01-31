@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Login Page</title>
 </head>
 
@@ -21,10 +20,10 @@
 	</form>
 	<br><br>
 	<h3 style="text-align: center;"><input type="submit" value="View Products" onclick="window.location='/products';" />
-	</h3>
+	</h3><br>
 
-	<h4 style="text-align: center;"> New to Shopping Portal?<br>
-		<input type="submit" value="Create a Shopping Portal account" onclick="window.location='/register';" />
+	<h4 style="text-align: center;"> New Customer?<br>
+		<input type="submit" value="Start here" onclick="window.location='/register';" />
 	</h4>
 
 </body>

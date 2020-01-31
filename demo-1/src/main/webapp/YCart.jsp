@@ -54,11 +54,11 @@
         </c:forEach>
     </table>
     </script>
-    </span>
+
     </h3><br><br>
     <hr>
     <h3 style="text-align: right;">
-        <button onclick="window.location.href = '/cancelorder';">Cancel the Order</button>
+        <button onclick="window.location.href = 'dashboard';">Cancel the Order</button>
         <button onclick="window.location.href = '/logout';"> Logout</button>
         <h3>
             <form action="/pay" method="POST">

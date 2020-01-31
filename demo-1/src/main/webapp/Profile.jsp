@@ -21,7 +21,9 @@
         Mobile Number: ${user.mobilenumber} <br><br>
         Address: ${user.address} <br><br>
 
-        <input type="button" onclick="window.location.href='editprofile';" value="edit"></h3>
+        <input type="button" onclick="window.location='editprofile';" value="edit">
+        <input type="button" onclick="window.location='dashboard';" value="Go Home"></h3>
+
 </body>
 
 </html>

@@ -19,11 +19,24 @@
         <input type="button" onclick="window.location.href='profile';" value="Profile">
     </span>
     <br><br><br>
-    <h3 style="text-align: center;">
-        Shop by Category : <input type="button" onclick="window.location.href='/products';" value="Products"><br><br>
-        Cart : <input type="button" onclick="window.location.href='/yourcart';" value="Cart"><br><br>
-        Your Orders : <input type="button" onclick="window.location.href='/orders';" value="Orders">
-    </h3>
+
+    <c:if test="${user.role == 'Admin'}">
+        <h2 style="text-align: center;">Product Data</h2><br>
+        <h3 style="text-align: center;">
+            <input type="button" onclick="window.location.href='/products';" value="Products"><br><br>
+            <input type="button" onclick="window.location.href='addproduct';" value="Add new product"><br><br>
+            <input type="button" onclick="window.location.href='register';" value="Create new admin">
+        </h3>
+    </c:if>
+
+    <c:if test="${user.role == 'Customer'}">
+        <h3 style="text-align: center;">
+            Shop by Category : <input type="button" onclick="window.location.href='/products';"
+                value="Products"><br><br>
+            Cart : <input type="button" onclick="window.location.href='/yourcart';" value="Cart"><br><br>
+            Your Orders : <input type="button" onclick="window.location.href='/orders';" value="Orders">
+        </h3>
+    </c:if>
 </body>
 
 </html>

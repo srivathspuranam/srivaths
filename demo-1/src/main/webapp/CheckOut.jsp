@@ -19,14 +19,21 @@
                 Shipping Address : <c:out value="${tb.address}"></c:out><br><br>
                 Products : <c:forEach items="${tb.items}" var="Y"><br>
                         Name : <c:out value="${Y.name}"></c:out><br>
-                        Quantity : <c:out value="${Y.quantity}"></c:out><br>
+                        Quantity : <c:out value="${stockleft}"></c:out><br>
                         Price : <c:out value="${Y.price}"></c:out><br>
+
+
+                        <c:set var="stockleft" value="${product.quantity - product.productstock}" />
+                        <c:out value="${stockleft}"></c:out>
+
+
                 </c:forEach><br>
                 <hr>
                 Total : <c:out value="${tb.total}"></c:out><br><br>
                 <hr>
-                <input type="button" onclick="window.location.href='dashboard';" value="Home Page">
+                <input type="button" onclick="window.location.href='/dashboard';" value="Home Page">
         </h3>
+
 </body>
 
 </html>

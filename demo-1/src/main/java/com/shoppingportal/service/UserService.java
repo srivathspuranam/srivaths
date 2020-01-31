@@ -47,23 +47,27 @@ public class UserService {
 	}
 
 	public void data() {
+
 		ProductBean pb = new ProductBean();
 		pb.setProductname("Tailored Jeans");
 		pb.setAbout("It is a carefully hand crafted jeans");
 		pb.setProductcategory("Clothes");
 		pb.setProductcost(500);
+		pb.setProductstock(100);
 		pr.save(pb);
 		pb = new ProductBean();
 		pb.setProductname("Bags");
 		pb.setAbout("Light weight and waterproof bags.");
 		pb.setProductcategory("Bags");
 		pb.setProductcost(100);
+		pb.setProductstock(100);
 		pr.save(pb);
 		pb = new ProductBean();
 		pb.setProductname("Pen");
 		pb.setAbout("Easy flow.");
 		pb.setProductcategory("Stationery");
 		pb.setProductcost(10);
+		pb.setProductstock(100);
 		pr.save(pb);
 
 		/*
@@ -90,7 +94,7 @@ public class UserService {
 	public ModelAndView logout(ModelAndView model, HttpServletRequest request) {
 		model.setViewName("LoginPage");
 		HttpSession session = request.getSession(false);
-		if (session == null) {
+		if (session != null) {
 			session.invalidate();
 			model.addObject("message", "You are successfully logged out");
 		} else {
@@ -155,22 +159,6 @@ public class UserService {
 		return model;
 	}
 
-	// ------------------------------------------PRODUCT-----------------------------------------------
-
-	public ModelAndView products(ModelAndView model, HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		if (session == null) {
-			model.setViewName("LoginPage");
-			model.addObject("message", "Login again");
-		} else {
-
-			List<ProductBean> products = pr.findAll();
-			model.setViewName("Products");
-			model.addObject("products", products);
-		}
-		return model;
-	}
-
 	public ModelAndView addtocart(ModelAndView model, HttpServletRequest request, YCartBean cart) {
 		HttpSession session = request.getSession(false);
 		Boolean flag = false;
@@ -192,13 +180,13 @@ public class UserService {
 				}
 				user.setShoppingcart(ycart);
 				ur.save(user);
-				System.out.println(ycart);
+
 			} else {
 				List<YCartBean> updateCart = new ArrayList<YCartBean>();
 				updateCart.add(cart);
 				user.setShoppingcart(updateCart);
 				ur.save(user);
-				System.out.println(updateCart);
+
 			}
 			session.setAttribute("user", user);
 		} else {
@@ -227,37 +215,6 @@ public class UserService {
 				session.setAttribute("product", ycart);
 			}
 			model.setViewName("YCart");
-		}
-		return model;
-	}
-
-	public void removeproduct(YCartBean cart, HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-			UserBean user = (UserBean) session.getAttribute("user");
-			List<YCartBean> ycart = ur.findByMobilenumber(user.getMobilenumber()).get(0).getShoppingcart();
-			List<YCartBean> newcart = new ArrayList<YCartBean>();
-
-			for (YCartBean temp : ycart) {
-				if (!(temp.getId() == cart.getId())) {
-					System.out.println(temp);
-					newcart.add(temp);
-				}
-			}
-			user.setShoppingcart(newcart);
-			System.out.println(newcart);
-			ur.save(user);
-		}
-	}
-
-	public ModelAndView cancelorder(ModelAndView model, HttpServletRequest request) {
-		model.setViewName("Products");
-		HttpSession session = request.getSession(false);
-		if (session == null) {
-			session.invalidate();
-			model.addObject("message", "Couldnot cancel the order");
-		} else {
-			model.addObject("message", "Order is succesfully cancelled");
 		}
 		return model;
 	}
@@ -310,17 +267,14 @@ public class UserService {
 			tb.setItems(ycart);
 			tb.setTotal(total);
 			tb.setStatus("Success");
-			System.out.println(user.getAddress());
 
 			List<TransactionBean> transactions = user.getTransactions();
 			transactions.add(tb);
 			user.setShoppingcart(null);
 			user.setTransactions(transactions);
 			ur.save(user);
-			String day = LocalDate.now().plusDays(2).format(DateTimeFormatter.ofPattern("dd-MMM"));
+			String day = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("dd-MMM"));
 			session.setAttribute("tb", tb);
-			System.out.println(tb);
-			System.out.println(tb.getItems());
 			session.setAttribute("day", day);
 			model.setViewName("CheckOut");
 		} else {

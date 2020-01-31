@@ -17,7 +17,9 @@ public class UserBean {
 	@Id
 	private String name;
 	private String password;
+	private String rpassword;
 	private String date;
+	private String role;
 	private Long mobilenumber;
 	private String address;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -27,8 +29,9 @@ public class UserBean {
 
 	@Override
 	public String toString() {
-		return "UserBean [name=" + name + ", password=" + password + ", date=" + date + ", mobilenumber=" + mobilenumber
-				+ ", address=" + address + ", shoppingcart=" + shoppingcart + ", Transactions=" + Transactions + "]";
+		return "UserBean [name=" + name + ", password=" + password + ", rpassword=" + rpassword + ", date=" + date
+				+ ", role=" + role + ", mobilenumber=" + mobilenumber + ", address=" + address + ", shoppingcart="
+				+ shoppingcart + ", Transactions=" + Transactions + "]";
 	}
 
 	public String getName() {
@@ -47,12 +50,28 @@ public class UserBean {
 		this.password = password;
 	}
 
+	public String getRpassword() {
+		return rpassword;
+	}
+
+	public void setRpassword(String rpassword) {
+		this.rpassword = rpassword;
+	}
+
 	public String getDate() {
 		return date;
 	}
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public Long getMobilenumber() {
